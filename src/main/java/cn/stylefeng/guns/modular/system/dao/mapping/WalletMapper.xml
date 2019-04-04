@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.stylefeng.guns.modular.system.dao.WalletMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.stylefeng.guns.modular.system.model.Wallet">
+        <id column="id" property="id" />
+        <result column="user_id" property="userId" />
+        <result column="wallet_number" property="walletNumber" />
+        <result column="avail_balance" property="availBalance" />
+        <result column="frozen_balance" property="frozenBalance" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, user_id, wallet_number, avail_balance, frozen_balance, create_time, update_time
+    </sql>
+
+    <select id="selectLists" resultType="map">
+        select
+        ua.id, ua.user_id, ua.wallet_number, ua.avail_balance, ua.frozen_balance, ui.phone, ua.create_time, ua.update_time
+        from wallet ua left join user_info ui on ua.user_id = ui.user_id
+        where 1 = 1
+        <if test="phone != null and phone != ''">
+            and ui.phone like CONCAT('%',#{phone},'%')
+        </if>
+    </select>
+</mapper>
