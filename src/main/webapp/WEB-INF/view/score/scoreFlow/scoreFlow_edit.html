@@ -1,0 +1,35 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+                            <#input id="id" name="ID" value="${item.id}" underline="true"/>
+                            <#input id="userId" name="用户ID" value="${item.userId}" underline="true"/>
+                            <#input id="operType" name="操作类型" value="${item.operType}" underline="true"/>
+                            <#input id="operId" name="操作人ID" value="${item.operId}" underline="true"/>
+                            <#input id="amount" name="操作积分" value="${item.amount}" />
+                </div>
+
+                <div class="col-sm-6">
+                            <#input id="resultAmount" name="操作后积分" value="${item.resultAmount}" underline="true"/>
+                            <#input id="endTime" name="积分过期时间" value="${item.endTime}" underline="true"/>
+                            <#input id="state" name="状态 0有效 1过期" value="${item.state}" underline="true"/>
+                            <#input id="createTime" name="创建时间" value="${item.createTime}" underline="true"/>
+                            <#input id="updateTime" name="更新时间" value="${item.updateTime}" />
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="ScoreFlowInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="ScoreFlowInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/score/scoreFlow/scoreFlow_info.js"></script>
+@}

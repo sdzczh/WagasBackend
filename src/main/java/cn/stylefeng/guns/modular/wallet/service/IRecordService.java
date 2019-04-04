@@ -1,6 +1,6 @@
-package cn.stylefeng.guns.modular.users.service;
+package cn.stylefeng.guns.modular.wallet.service;
 
-import cn.stylefeng.guns.modular.system.model.UserInfo;
+import cn.stylefeng.guns.modular.system.model.Record;
 import com.baomidou.mybatisplus.service.IService;
 
 import java.util.List;
@@ -14,7 +14,7 @@ import java.util.Map;
  * @author zhaohe
  * @since 2019-04-04
  */
-public interface IUserInfoService extends IService<UserInfo> {
+public interface IRecordService extends IService<Record> {
 
     List<Map<String, Object>> selectLists(String phone);
 }

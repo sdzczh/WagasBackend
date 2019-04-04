@@ -1,5 +1,6 @@
 package cn.stylefeng.guns.modular.users.controller;
 
+import cn.stylefeng.guns.modular.system.warpper.UserInfoWarpper;
 import cn.stylefeng.roses.core.base.controller.BaseController;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import org.springframework.stereotype.Controller;
@@ -12,6 +13,9 @@ import cn.stylefeng.guns.core.log.LogObjectHolder;
 import org.springframework.web.bind.annotation.RequestParam;
 import cn.stylefeng.guns.modular.system.model.UserInfo;
 import cn.stylefeng.guns.modular.users.service.IUserInfoService;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * 会员信息管理控制器
@@ -61,9 +65,8 @@ public class UserInfoController extends BaseController {
     @RequestMapping(value = "/list")
     @ResponseBody
     public Object list(String phone) {
-        EntityWrapper<UserInfo> entityWrapper = new EntityWrapper<>();
-        entityWrapper.like("phone", phone);
-        return userInfoService.selectList(entityWrapper);
+        List<Map<String, Object>> lists = userInfoService.selectLists(phone);
+        return new UserInfoWarpper(lists).wrap();
     }
 
     /**

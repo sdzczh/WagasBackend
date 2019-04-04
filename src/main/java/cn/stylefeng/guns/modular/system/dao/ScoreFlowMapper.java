@@ -1,6 +1,6 @@
 package cn.stylefeng.guns.modular.system.dao;
 
-import cn.stylefeng.guns.modular.system.model.UserInfo;
+import cn.stylefeng.guns.modular.system.model.ScoreFlow;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -15,5 +15,7 @@ import java.util.Map;
  * @author zhaohe
  * @since 2019-04-04
  */
-public interface UserInfoMapper extends BaseMapper<UserInfo> {
+public interface ScoreFlowMapper extends BaseMapper<ScoreFlow> {
+
+    List<Map<String, Object>> selectLists(@Param("phone") String phone);
 }
