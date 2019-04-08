@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.stylefeng.guns.modular.system.dao.CouponMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.stylefeng.guns.modular.system.model.Coupon">
+        <id column="id" property="id" />
+        <result column="score" property="score" />
+        <result column="level" property="level" />
+        <result column="amount" property="amount" />
+        <result column="remain" property="remain" />
+        <result column="price" property="price" />
+        <result column="effective_time" property="effectiveTime" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, score, level, amount, remain, price, effective_time, create_time, update_time
+    </sql>
+    <select id="selectLists" resultType="map">
+        select
+        ua.id, ui.title, ui.desc, ui.rules, ui.show_img_url, ui.info_img_url, ua.score, ua.level, ua.amount, ua.remain, ua.price, ua.effective_time, ua.create_time, ua.update_time
+        from coupon ua left join coupon_info ui on ua.id = ui.coupon_id
+        where 1 = 1
+        <if test="title != null and title != ''">
+            and ui.title like CONCAT('%',#{title},'%')
+        </if>
+    </select>
+</mapper>
