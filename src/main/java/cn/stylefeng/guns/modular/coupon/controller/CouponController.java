@@ -62,7 +62,7 @@ public class CouponController extends BaseController {
     public String couponUpdate(@PathVariable Integer couponId, Model model) {
         Coupon coupon = couponService.selectById(couponId);
         EntityWrapper entityWrapper = new EntityWrapper();
-        entityWrapper.like("coupon_id", couponId.toString());
+        entityWrapper.eq("coupon_id", couponId.toString());
         CouponInfo couponInfo = couponInfoService.selectOne(entityWrapper);
         model.addAttribute("item",coupon);
         model.addAttribute("couponInfo",couponInfo);
@@ -112,6 +112,10 @@ public class CouponController extends BaseController {
     @ResponseBody
     public Object delete(@RequestParam Integer couponId) {
         couponService.deleteById(couponId);
+        EntityWrapper entityWrapper = new EntityWrapper();
+        entityWrapper.eq("coupon_id", couponId);
+        CouponInfo couponInfo = couponInfoService.selectOne(entityWrapper);
+        couponInfoService.deleteById(couponInfo.getId());
         return SUCCESS_TIP;
     }
 
