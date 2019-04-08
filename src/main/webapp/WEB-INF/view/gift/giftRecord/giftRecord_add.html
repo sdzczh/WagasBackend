@@ -1,0 +1,33 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+                            <#input id="id" name="ID" underline="true"/>
+                            <#input id="userId" name="用户ID" underline="true"/>
+                            <#input id="acceptId" name="接受方ID" underline="true"/>
+                            <#input id="gId" name="礼物ID"/>
+                </div>
+
+                <div class="col-sm-6">
+                            <#input id="state" name="状态 0未领取 1已领取 2已退回" underline="true"/>
+                            <#input id="message" name="留言" underline="true"/>
+                            <#input id="createTime" name="创建时间" underline="true"/>
+                            <#input id="updateTime" name="更新时间" underline="true"/>
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="GiftRecordInfoDlg.addSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="GiftRecordInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/gift/giftRecord/giftRecord_info.js"></script>
+@}

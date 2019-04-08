@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.stylefeng.guns.modular.system.dao.GiftRecordMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.stylefeng.guns.modular.system.model.GiftRecord">
+        <id column="id" property="id" />
+        <result column="user_id" property="userId" />
+        <result column="accept_id" property="acceptId" />
+        <result column="g_id" property="gId" />
+        <result column="state" property="state" />
+        <result column="message" property="message" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, user_id, accept_id, g_id, state, message, create_time, update_time
+    </sql>
+
+    <select id="selectLists" resultType="map">
+        SELECT
+        ui.id,gi.gift_name, us.phone, uss.phone acceptPhone, ui.state, ui.message, ui.create_time, ui.update_time
+        FROM gift_record ui
+        left join user_info us on us.user_id=ui.user_id
+        left join user_info uss on uss.user_id=ui.accept_id
+        left join gift gi on gi.id=ui.g_id
+        WHERE 1 = 1
+        <if test="pushPhone != null and pushPhone != ''">
+            AND us.phone LIKE CONCAT('%',#{pushPhone},'%')
+        </if>
+        <if test="recivePhone != null and recivePhone != ''">
+            AND uss.phone LIKE CONCAT('%',#{recivePhone},'%')
+        </if>
+        <if test="giftName != null and giftName != ''">
+            AND gi.gift_name LIKE CONCAT('%',#{giftName},'%')
+        </if>
+        <if test="state != null">
+            AND ui.state = #{state}
+        </if>
+    </select>
+</mapper>

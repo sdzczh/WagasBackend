@@ -1,0 +1,53 @@
+@layout("/common/_container.html"){
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>礼物赠送记录管理</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row row-lg">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <#NameCon id="giftName" name="礼物名称" />
+                            </div>
+                            <div class="col-sm-2">
+                                <#NameCon id="pushPhone" name="用户手机号" />
+                            </div>
+                            <div class="col-sm-2">
+                                <#NameCon id="recivePhone" name="接受方手机号" />
+                            </div>
+                            <div class="col-sm-2">
+                                <select id="state" class="form-control">
+                                    <option value="">--请选择记录状态--</option>
+                                    <option value="0">未领取</option>
+                                    <option value="0">已领取</option>
+                                    <option value="0">已退回</option>
+                               </select>
+                            </div>
+                            <div class="col-sm-3">
+                                <#button name="搜索" icon="fa-search" clickFun="GiftRecord.search()"/>
+                                <#button name="重置" icon="fa-undo" clickFun="GiftRecord.resetSearch()"/>
+                            </div>
+                        </div>
+                        <div class="hidden-xs" id="GiftRecordTableToolbar" role="group">
+                            @if(shiro.hasPermission("/giftRecord/add")){
+                                <#button name="添加" icon="fa-plus" clickFun="GiftRecord.openAddGiftRecord()"/>
+                            @}
+                            @if(shiro.hasPermission("/giftRecord/update")){
+                                <#button name="修改" icon="fa-edit" clickFun="GiftRecord.openGiftRecordDetail()" space="true"/>
+                            @}
+                            @if(shiro.hasPermission("/giftRecord/delete")){
+                                <#button name="删除" icon="fa-remove" clickFun="GiftRecord.delete()" space="true"/>
+                            @}
+                        </div>
+                        <#table id="GiftRecordTable"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/gift/giftRecord/giftRecord.js"></script>
+@}
