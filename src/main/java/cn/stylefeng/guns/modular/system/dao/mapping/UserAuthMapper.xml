@@ -8,6 +8,7 @@
         <result column="user_id" property="userId" />
         <result column="identity_type" property="identityType" />
         <result column="token" property="token" />
+        <result column="open_id" property="openId" />
         <result column="auth" property="auth" />
         <result column="create_time" property="createTime" />
         <result column="update_time" property="updateTime" />
@@ -15,12 +16,12 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, user_id, phone, identity_type, token, auth, create_time, update_time
+        id, user_id, phone, identity_type, token, open_id, auth, create_time, update_time
     </sql>
 
     <select id="selectLists" resultType="map">
         select
-        ua.id, ua.user_id, ui.phone, ua.identity_type, ua.token, ua.auth, ua.create_time, ua.update_time
+        ua.id, ua.user_id, ui.phone, ua.identity_type, ua.token, ua.open_id, ua.auth, ua.create_time, ua.update_time
         from user_auth ua left join user_info ui on ua.user_id = ui.user_id
         where 1 = 1
         <if test="phone != null and phone != ''">

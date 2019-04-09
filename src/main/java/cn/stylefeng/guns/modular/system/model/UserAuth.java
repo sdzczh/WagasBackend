@@ -40,6 +40,9 @@ public class UserAuth extends Model<UserAuth> {
      * 用户唯一标识
      */
     private String token;
+
+    @TableField("open_id")
+    private String openId;
     /**
      * 身份 0用户 1商户
      */
@@ -78,6 +81,14 @@ public class UserAuth extends Model<UserAuth> {
 
     public void setIdentityType(Integer identityType) {
         this.identityType = identityType;
+    }
+
+    public String getOpenId() {
+        return openId;
+    }
+
+    public void setOpenId(String openId) {
+        this.openId = openId;
     }
 
     public String getToken() {

@@ -18,7 +18,8 @@ UserAuth.initColumn = function () {
             {title: '用户ID', field: 'user_id', visible: true, align: 'center', valign: 'middle'},
             {title: '手机号', field: 'phone', visible: true, align: 'center', valign: 'middle'},
             {title: '授权类型', field: 'identityType', visible: true, align: 'center', valign: 'middle'},
-            {title: '用户唯一标识', field: 'token', visible: true, align: 'center', valign: 'middle'},
+            {title: '用户唯一标识', field: 'open_id', visible: true, align: 'center', valign: 'middle'},
+            {title: 'token', field: 'token', visible: true, align: 'center', valign: 'middle'},
             {title: '身份', field: 'userAuth', visible: true, align: 'center', valign: 'middle'},
             {title: '创建时间', field: 'create_time', visible: true, align: 'center', valign: 'middle'},
             {title: '修改时间', field: 'update_time', visible: true, align: 'center', valign: 'middle'}
